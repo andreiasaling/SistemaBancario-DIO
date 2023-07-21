@@ -21,11 +21,30 @@ while True:
         extrato += f"Depósito: {str(valor_deposito)} \n"
 
     elif opcao == "S":
-        print("saque")
+        if qtde_saques < LIMITE_SAQUES:
+            valor_saque = float(input("Informe o valor para saque: "))
+            if valor_saque <= 0:
+                print("Informe um valor positivo para saque")
+            else:
+                if valor_saque <= saldo and valor_saque > 0:
+                    if valor_saque <= valor_limite_saque:
+                        saldo -= valor_saque
+                        extrato += f"Saque: {str(valor_saque)} \n"
+                        qtde_saques += 1
+                        print("Retire o valor na boca do caixa!")
+                    else:
+                        print("O limite para saque é R$ 500.00")
+                else:
+                    print(f"Saldo insuficiente. Seu saldo é R$ {saldo}")
+                    continue
+        else:
+            print("Limite de saque diário atingido.")
+            
 
     elif opcao == "E":
         print("extrato")
-        print(f"---Extrato---\n{extrato} \n Saldo: {saldo:.2f}")
+        print(f"---Extrato---\n{extrato} \n Saldo: R$ {saldo:.2f}")
+
     elif opcao == "Q":
         print("Encerrando sessão...")
         break
