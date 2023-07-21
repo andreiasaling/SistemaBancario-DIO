@@ -16,11 +16,16 @@ while True:
     opcao = input(menu).upper()
 
     if opcao == "D":
-        print("deposito")
+        valor_deposito = float(input("Informe o valor para depósito: "))
+        saldo += valor_deposito
+        extrato += f"Depósito: {str(valor_deposito)} \n"
+
     elif opcao == "S":
         print("saque")
+
     elif opcao == "E":
         print("extrato")
+        print(f"---Extrato---\n{extrato} \n Saldo: {saldo:.2f}")
     elif opcao == "Q":
         print("Encerrando sessão...")
         break
