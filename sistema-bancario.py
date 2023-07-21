@@ -18,7 +18,7 @@ while True:
     if opcao == "D":
         valor_deposito = float(input("Informe o valor para depósito: "))
         saldo += valor_deposito
-        extrato += f"Depósito: {str(valor_deposito)} \n"
+        extrato += f"Depósito: R$ {str(valor_deposito)} \n"
 
     elif opcao == "S":
         if qtde_saques < LIMITE_SAQUES:
@@ -29,7 +29,7 @@ while True:
                 if valor_saque <= saldo and valor_saque > 0:
                     if valor_saque <= valor_limite_saque:
                         saldo -= valor_saque
-                        extrato += f"Saque: {str(valor_saque)} \n"
+                        extrato += f"Saque: R$ {str(valor_saque)} \n"
                         qtde_saques += 1
                         print("Retire o valor na boca do caixa!")
                     else:
@@ -42,8 +42,7 @@ while True:
             
 
     elif opcao == "E":
-        print("extrato")
-        print(f"---Extrato---\n{extrato} \n Saldo: R$ {saldo:.2f}")
+        print("====Extrato==== \nNão foram realizadas transações \n") if not extrato else print(f"====Extrato====\n{extrato} \n Saldo: R$ {saldo:.2f}")
 
     elif opcao == "Q":
         print("Encerrando sessão...")
